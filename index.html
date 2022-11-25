@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Converter</title>
+
+  <!-- CSS -->
+  <link href="NFAtoDFA.css" rel="stylesheet" />
+</head>
+
+<body>
+  <nav class="nav">
+    <a class="navbar-brand" href="/index.html">E-NFA to DFA</a>
+    <div class="navbar-nav-items">
+      <a class="navbarLink" href="#">Ex1</a>
+      <a class="navbarLink" href="#">Ex2</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="inner">
+      <div>
+
+        <br />
+        <div>
+          <h2>Input</h2>
+          <div class="buttons">
+            <button type="button" class="btn btn-outline-danger" id="resetBtn" title="Reset the current NFA">
+              Reset
+            </button>
+            <button type="button" class="btn btn-outline-success" id="exampleBtn" title="Fill in an example NFA">
+              Example
+            </button>
+            <button id="new-transition" type="button" class="btn btn-outline-dark" title="Create a new transition">
+              New transition
+            </button>
+          </div>
+
+          <form class="form-horizontal align-center" id="nfa" role="form">
+            <form class="form-horizontal">
+              <div class="form-group form-inline">
+                <label for="initialStateInput">Initial State:&nbsp;&nbsp;</label>
+                <input type="text" class="form-control" id="initialStateInput" />
+              </div>
+              <br />
+              <div class="form-group form-inline">
+                <label for="finalStatesInput">Final States:&nbsp;&nbsp;</label>
+                <input type="text" class="form-control" id="finalStatesInput" />
+              </div>
+            </form>
+            <div class="form-inline" id="nfa-transitions">
+              <div class="production-row">
+                &delta;(&nbsp;<input type="text" class="form-control current-state-input" />&nbsp;,&nbsp;<input
+                  type="text" class="form-control input-symbol" placeholder="&lambda;" />&nbsp;)&nbsp;=&nbsp;<input
+                  type="text" class="form-control next-states" />
+                <button class="remove-button" type="button">Remove</button>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+          <div class="clearfix"></div>
+          <br />
+        </div>
+      </div>
+      <div class="right">
+        <div class="clearfix"></div>
+        <h4 id="verify-update-debug">Your input:</h4>
+        <p></p>
+        <span id="current-nfa-status"></span>
+        <div id="current-nfa"></div>
+        <div style="margin-bottom: 50px;"></div>
+        <div class="clearfix"></div>
+        <h4>Equivalent DFA</h4>
+        <div class="row">
+          <div class="col-lg">
+            <span id="current-dfa-status"></span>
+            <div id="current-dfa"></div>
+          </div>
+          <div id="step-div" class="col-lg"></div>
+        </div>
+        <!-- <h4>Minimized DFA</h4>
+    <span id="current-dfa-minimized-status"></span>
+    <div id="current-dfa-minimized"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Ignore Just Imports -->
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://unpkg.com/viz.js@1.8.1/viz.js" type="javascript/worker"></script>
+  <script src="https://unpkg.com/d3-graphviz@2.6.1/build/d3-graphviz.js"></script>
+  <!-- NFAtoDFA engine -->
+  <script src="Engine.js"></script>
+  <!-- NFAtoDFA DOM -->
+  <script src="Dom.js"></script>
+</body>
+
+</html>
