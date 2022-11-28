@@ -26,12 +26,6 @@
   color: black;
 }
 
-.inner {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-inline: 400px;
-}
 
 .buttons{
   display: flex;

@@ -22,52 +22,49 @@
 
   <div class="container">
     <h1 id="error" style="color: red;"></h1>
-    <div class="inner">
+    <div>
       <div>
-        <br />
-        <div>
-          <h3>Input</h3>
-          <div class="buttons">
-            <button type="button" id="resetBtn" title="Reset Page">
-              Reset
-            </button>
-            <button type="button" class="btn btn-outline-success" id="exampleBtn" title="Fill in an example NFA">
-              Example 1
-            </button>
-            <button type="button" class="btn btn-outline-success" id="exampleBtnSecond" title="Fill in an example NFA">
-              Example 2
-            </button>
-            <button id="new-transition" type="button" title="New transition">
-              New transition
-            </button>
-          </div>
+        <h3>Input</h3>
+        <div class="buttons">
+          <button type="button" id="resetBtn" title="Reset Page">
+            Reset
+          </button>
+          <button type="button" id="exampleBtn" title="Fill in an example NFA">
+            Example 1
+          </button>
+          <button type="button" id="exampleBtnSecond" title="Fill in an example NFA">
+            Example 2
+          </button>
+          <button id="new-transition" type="button" title="New transition">
+            New transition
+          </button>
+        </div>
 
-          <form class="form-horizontal align-center" id="nfa" role="form">
-            <form class="form-horizontal">
-              <div>
-                <label>Initial State:&nbsp;&nbsp;</label>
-                <input type="text" id="initialStateInput" />
-              </div>
-              <br />
-              <div>
-                <label>Final States:&nbsp;&nbsp;</label>
-                <input type="text" id="finalStatesInput" />
-              </div>
-            </form>
-            <div class="form-inline" id="nfa-transitions">
-              <div class="production-row">
-                &delta;&nbsp;
-                <input type="text" class="form-control current-state-input" />&nbsp;,&nbsp;
-                <input type="text" class="input-symbol" placeholder="e" />&nbsp;&nbsp; &rarr;&nbsp;
-                <input type="text" class="next-states" />
-                <button class="remove-button" type="button">Remove</button>
-              </div>
+        <form id="nfa" role="form">
+          <form>
+            <div>
+              <label>Initial State:&nbsp;&nbsp;</label>
+              <input type="text" id="initialStateInput" />
+            </div>
+            <br />
+            <div>
+              <label>Final States:&nbsp;&nbsp;</label>
+              <input type="text" id="finalStatesInput" />
             </div>
           </form>
-          <br />
-        </div>
+          <div id="nfa-transitions">
+            <div class="production-row">
+              &delta;&nbsp;
+              <input type="text" class="form-control current-state-input" />&nbsp;,&nbsp;
+              <input type="text" class="input-symbol" placeholder="e" />&nbsp;&nbsp; &rarr;&nbsp;
+              <input type="text" class="next-states" />
+              <!-- <button class="remove-button" type="button">Remove</button> -->
+            </div>
+          </div>
+        </form>
+        <br />
       </div>
-      <div class="right">
+      <div>
         <h4 id="verify-update-debug">Your input:</h4>
         <p></p>
         <span id="current-nfa-status"></span>
@@ -81,9 +78,6 @@
           </div>
           <div id="step-div"></div>
         </div>
-        <!-- <h4>Minimized DFA</h4>
-        <span id="current-dfa-minimized-status"></span>
-        <div id="current-dfa-minimized"></div> -->
       </div>
     </div>
   </div>
