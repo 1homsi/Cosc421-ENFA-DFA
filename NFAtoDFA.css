@@ -26,7 +26,6 @@
   color: black;
 }
 
-
 .inner {
   display: flex;
   flex-direction: row;
@@ -39,51 +38,7 @@
   width: 200px;
   flex-direction: column;
   justify-content: space-between;
-  height: 70px;
-}
-
-
-.instructions {
-  margin-bottom: 0px;
-}
-
-
-.instructions-list {
-  padding-left: 30px;
-}
-
-.btn {
-  margin-right: 5px;
-}
-
-.col-xs-nt,
-.col-xs-pr {
-  min-height: 1px;
-  padding-right: 10px;
-  padding-left: 10px;
-  position: relative;
-}
-
-.col-xs-nt {
-  float: left;
-  min-width: 60px;
-  width: 5.5%;
-}
-
-.col-xs-pr {
-  float: left;
-  min-width: 100px;
-  width: 9%;
-}
-
-div.arrow,
-div.or,
-div.remove {
-  display: inline-block;
-  font-size: 20px;
-  height: 34px;
-  line-height: 34px;
-  vertical-align: middle;
+  height: 100px;
 }
 
 div.production-row {
@@ -92,25 +47,21 @@ div.production-row {
   font-size: larger;
 }
 
-.main-part {
-  text-align: center;
-  align-items: center;
-}
-
-span.remove-button {
+div .remove-button {
   margin-left: 5px;
 }
 
-span.remove-button:hover {
-  background: #555555;
-  border-radius: 10px;
-  color: #aaaaaa;
+div .remove-button:hover {
   cursor: pointer;
 }
 
 div.new-production {
   margin-top: 10px;
   min-width: 480px;
+}
+
+.production-row input {
+  max-width: 55px;
 }
 
 #nfa {
@@ -122,6 +73,3 @@ div.new-production {
   margin-left: 15px;
 }
 
-.production-row input {
-  max-width: 100px;
-}

@@ -47,7 +47,13 @@ class NFA {
       transitions = arr;
     }
 
-    // TODO Make sure states cannot be named INITIAL_STATE
+    // Make sure states cannot be named INITIAL_STATE or FINAL_STATE
+    if (states.includes("INITIAL_STATE"))
+      throw new Error("State name INITIAL_STATE is reserved");
+    if (states.includes("FINAL_STATE"))
+      throw new Error("State name FINAL_STATE is reserved");
+
+
 
     this.initialState = initialState;
     this.finalStates = finalStates;
@@ -226,8 +232,6 @@ function lambdaClosureNFA(nfa) {
 
   console.log("--- Lambda NFA ---");
   console.log(nfa.toDotString());
-  console.log("--___--");
-
   return nfa;
 }
 
@@ -240,9 +244,6 @@ function fetch_E_Closure(state, transitions) {
 
   let e_closure = [];
   e_closure.push(state);
-  //console.log("--- Add to e_closure 1 ---");
-  //console.log(state);
-  //console.log("-----");
 
   for (let i = 0; i < transitions.length; i++) {
     let t = transitions[i];
@@ -259,20 +260,12 @@ function fetch_E_Closure(state, transitions) {
           if (!e_closure.includes(t.nextStates[j])) {
             // If not, add it to the closure
             e_closure.push(t.nextStates[j]);
-            ///console.log("--- Add to e_closure 2 ---");
-            //console.log(t.nextStates[j]);
-            //console.log("-----");
 
-            // Then check the closure for the newly added state (recursive)
-            //console.log("RECURSIVE");
             let sub_e_closure = fetch_E_Closure(t.nextStates[j], transitions);
 
             for (let j = 0; j < sub_e_closure.length; j++) {
               if (!e_closure.includes(sub_e_closure[j])) {
                 e_closure.push(sub_e_closure[j]);
-                //console.log("--- Add to e_closure 3 ---");
-                //console.log(sub_e_closure[j]);
-                //console.log("-----");
               }
             }
           }
@@ -321,7 +314,6 @@ function generateDFA(nfa, step_counter_stop = -1) {
 
       for (let j = 0; j < states.length; j++) {
         let ns = findNextStates(states[j], nfa.alphabet[i], nfa.transitions);
-        //console.log("Next states for " + states[j] + ", " + nfa.alphabet[i] + " -> " + ns);
         for (let k = 0; k < ns.length; k++)
           if (!next_states_union.includes(ns[k])) next_states_union.push(ns[k]);
       }
@@ -329,7 +321,6 @@ function generateDFA(nfa, step_counter_stop = -1) {
       let combinedStatesUnion = combineStates(next_states_union);
 
       if (combinedStatesUnion != null) {
-        //console.log("Combined union of " + next_states_union + " (" + next_states_union.length + "): " + combinedStatesUnion + " | " + Array.isArray(combinedStatesUnion));
         console.log(
           state + ", " + nfa.alphabet[i] + " -> " + combinedStatesUnion
         );

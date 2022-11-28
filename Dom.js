@@ -1,4 +1,4 @@
-class UserInput {
+class Inputs {
   constructor(initialState, finalStates, states, alphabet, transitions) {
     this.initialState = initialState;
     this.finalStates = finalStates;
@@ -7,21 +7,17 @@ class UserInput {
     this.transitions = transitions;
   }
 }
+
 $(document).ready(function () {
   $("#new-transition").click(function () {
     let transitionsDiv = $("#nfa-transitions");
     let clone = $("#nfa-transitions .production-row").last().clone(true);
-
     clone.appendTo(transitionsDiv);
-
     $(".remove-button").show();
   });
 
   let removeButton = $(".remove-button");
-
-  // Hide all remove buttons initially
   removeButton.hide();
-  // Register onClick() event for remove buttons
   removeButton.click(function () {
     let parent = $(this).parent();
     let grandparent = parent.parent();
@@ -45,16 +41,16 @@ $(document).ready(function () {
 
   $(".production-row input").on("keyup", function (e) {
     if (e.which !== 13) {
-      $("#verify-update-debug").click();
+      Update();
     }
   });
 
   $("#initialStateInput").on("keyup", function (e) {
-    $("#verify-update-debug").click();
+    Update();
   });
 
   $("#finalStatesInput").on("keyup", function (e) {
-    $("#verify-update-debug").click();
+    Update();
   });
 
   $("#exampleBtn").click(function () {
@@ -68,69 +64,84 @@ $(document).ready(function () {
       $(this).remove();
     });
 
-    /*clone.find(".current-state-input").val('q0');
-        clone.find(".input-symbol").val('');
-        clone.find(".next-states").val('q1');
-        transitionsDiv.append(clone);
+    clone.find(".current-state-input").val('q0');
+    clone.find(".input-symbol").val('');
+    clone.find(".next-states").val('q1');
+    transitionsDiv.append(clone);
 
-        clone = clone.clone(true);
-        clone.find(".current-state-input").val('q1');
-        clone.find(".input-symbol").val('a');
-        clone.find(".next-states").val('q1');
-        transitionsDiv.append(clone);
+    clone = clone.clone(true);
+    clone.find(".current-state-input").val('q1');
+    clone.find(".input-symbol").val('a');
+    clone.find(".next-states").val('q1');
+    transitionsDiv.append(clone);
 
-        clone = clone.clone(true);
-        clone.find(".current-state-input").val('q1');
-        clone.find(".input-symbol").val('a');
-        clone.find(".next-states").val('q2');
-        transitionsDiv.append(clone);
+    clone = clone.clone(true);
+    clone.find(".current-state-input").val('q1');
+    clone.find(".input-symbol").val('a');
+    clone.find(".next-states").val('q2');
+    transitionsDiv.append(clone);
 
-        clone = clone.clone(true);
-        clone.find(".current-state-input").val('q2');
-        clone.find(".input-symbol").val('b');
-        clone.find(".next-states").val('q3');
-        transitionsDiv.append(clone);
+    clone = clone.clone(true);
+    clone.find(".current-state-input").val('q2');
+    clone.find(".input-symbol").val('b');
+    clone.find(".next-states").val('q3');
+    transitionsDiv.append(clone);
 
-        clone = clone.clone(true);
-        clone.find(".current-state-input").val('q3');
-        clone.find(".input-symbol").val('');
-        clone.find(".next-states").val('q1');
-        transitionsDiv.append(clone);
+    clone = clone.clone(true);
+    clone.find(".current-state-input").val('q3');
+    clone.find(".input-symbol").val('');
+    clone.find(".next-states").val('q1');
+    transitionsDiv.append(clone);
 
-        clone.find(".current-state-input").val('q0');
-        clone.find(".input-symbol").val('a');
-        clone.find(".next-states").val('q2');
-        transitionsDiv.append(clone);
+    clone.find(".current-state-input").val('q0');
+    clone.find(".input-symbol").val('a');
+    clone.find(".next-states").val('q2');
+    transitionsDiv.append(clone);
 
-        clone = clone.clone(true);
-        clone.find(".current-state-input").val('q0');
-        clone.find(".input-symbol").val('b');
-        clone.find(".next-states").val('q1');
-        transitionsDiv.append(clone);
+    clone = clone.clone(true);
+    clone.find(".current-state-input").val('q0');
+    clone.find(".input-symbol").val('b');
+    clone.find(".next-states").val('q1');
+    transitionsDiv.append(clone);
 
-        clone = clone.clone(true);
-        clone.find(".current-state-input").val('q1');
-        clone.find(".input-symbol").val('a');
-        clone.find(".next-states").val('q1');
-        transitionsDiv.append(clone);
+    clone = clone.clone(true);
+    clone.find(".current-state-input").val('q1');
+    clone.find(".input-symbol").val('a');
+    clone.find(".next-states").val('q1');
+    transitionsDiv.append(clone);
 
-        clone = clone.clone(true);
-        clone.find(".current-state-input").val('q1');
-        clone.find(".input-symbol").val('a');
-        clone.find(".next-states").val('q2');
-        transitionsDiv.append(clone);
+    clone = clone.clone(true);
+    clone.find(".current-state-input").val('q1');
+    clone.find(".input-symbol").val('a');
+    clone.find(".next-states").val('q2');
+    transitionsDiv.append(clone);
 
-        clone = clone.clone(true);
-        clone.find(".current-state-input").val('q1');
-        clone.find(".input-symbol").val('b');
-        clone.find(".next-states").val('q2');
-        transitionsDiv.append(clone);
+    clone = clone.clone(true);
+    clone.find(".current-state-input").val('q1');
+    clone.find(".input-symbol").val('b');
+    clone.find(".next-states").val('q2');
+    transitionsDiv.append(clone);
 
-        clone = clone.clone(true);
-        clone.find(".current-state-input").val('q2');
-        clone.find(".input-symbol").val('');
-        clone.find(".next-states").val('q0');
-        transitionsDiv.append(clone);*/
+    clone = clone.clone(true);
+    clone.find(".current-state-input").val('q2');
+    clone.find(".input-symbol").val('');
+    clone.find(".next-states").val('q0');
+    transitionsDiv.append(clone);
+
+    $(".remove-button").show();
+    Update();
+  });
+
+  $("#exampleBtnSecond").click(function () {
+    $("#initialStateInput").val("q0");
+    $("#finalStatesInput").val("q1");
+
+    let transitionsDiv = $("#nfa-transitions");
+    let clone = $("#nfa-transitions .production-row").first().clone(true);
+
+    transitionsDiv.children().each(function () {
+      $(this).remove();
+    });
 
     clone.find(".current-state-input").val("q0");
     clone.find(".input-symbol").val("a");
@@ -180,26 +191,16 @@ $(document).ready(function () {
     transitionsDiv.append(clone);
 
     $(".remove-button").show();
-    $("#verify-update-debug").click();
+    Update();
   });
 
   $("#resetBtn").click(function () {
-    // $("#initialStateInput").val("");
-    // $("#finalStatesInput").val("");
-    // $(".remove-button").slice(1).click();
-    // $(".remove-button").hide();
-    // $("#nfa-transitions input").val("");
-    // $("#current-nfa").empty();
-    // $("#current-dfa").empty();
-    // $("#current-dfa-minimized").empty();
-    // $("#step-div").empty();
-    //Reset the entire page comment code below if you want it to reset specific sections
-    window.location.reload();
+    window.location.reload(); //Reload the page to reset the form
   });
 
-  $("#verify-update-debug").click(function () {
+  const Update = () => {
+    document.getElementById('current-nfa-status').innerText = 'Loading ...';
     let user_input = fetchUserInput();
-
     let dotStr = "digraph fsm {\n";
     dotStr += "rankdir=LR;\n";
     dotStr += 'size="8,5";\n';
@@ -220,10 +221,6 @@ $(document).ready(function () {
 
     dotStr += "}";
 
-    //document.getElementById('current-nfa-status').innerText = 'Rendering...';
-
-    // TODO This render method throws an exception if the input is invalid
-    // we should catch the exception and print an "invalid input" error to the user
     d3.select("#current-nfa").graphviz().zoom(false).renderDot(dotStr);
 
     // generate the DFA
@@ -236,6 +233,9 @@ $(document).ready(function () {
         user_input.transitions
       )
     );
+
+
+    document.getElementById('current-nfa-status').innerText = '';
 
     let step_div = $("#step-div");
 
@@ -251,19 +251,19 @@ $(document).ready(function () {
       );
     }
 
+
     dotStr = dfa.toDotString();
-    console.log(dotStr);
     d3.select("#current-dfa").graphviz().zoom(false).renderDot(dotStr);
 
-    dfa = minimizeDFA(dfa);
-    dotStr = dfa.toDotString();
-    console.log(dotStr);
-    $("#current-dfa-minimized").show();
-    d3.select("#current-dfa-minimized")
-      .graphviz()
-      .zoom(false)
-      .renderDot(dotStr);
-  });
+    // dfa = minimizeDFA(dfa);
+    // dotStr = dfa.toDotString();
+    // console.log(dotStr);
+    // $("#current-dfa-minimized").show();
+    // d3.select("#current-dfa-minimized")
+    //   .graphviz()
+    //   .zoom(false)
+    //   .renderDot(dotStr);
+  };
 
   $("#step-div").on("click", "button", function () {
     let step = $(this).data("step-number");
@@ -286,11 +286,11 @@ $(document).ready(function () {
 
     d3.select("#current-dfa").graphviz().zoom(false).renderDot(dotStr);
 
-    if (step !== LAST_COMPLETED_STEP_COUNT + 1) {
-      $("#current-dfa-minimized").hide();
-    } else {
-      $("#current-dfa-minimized").show();
-    }
+    // if (step !== LAST_COMPLETED_STEP_COUNT + 1) {
+    //   $("#current-dfa-minimized").hide();
+    // } else {
+    //   $("#current-dfa-minimized").show();
+    // }
   });
 
   function fetchUserInput() {
@@ -299,40 +299,26 @@ $(document).ready(function () {
     let states = [];
     let alphabet = [];
     let transitions = [];
-
     if (initialState.includes("{") || finalStates.includes("{")) {
-      alert('State names cannot contain the "{" character!');
+      document.getElementById('error').innerText = 'State names cannot contain "{"';
       return null;
     }
-
     $(".production-row").each(function () {
       let currentState = $(this).find(".current-state-input").val().trim();
       let inputSymbol = $(this).find(".input-symbol").val().trim();
-
-      if (inputSymbol === "") inputSymbol = "\u03BB"; //lambda character
-
+      if (inputSymbol === "") inputSymbol = "\u03BB";
       let nextState = $(this).find(".next-states").val().trim();
-
-      // TODO Better state validation?
       if (currentState.includes("{") || nextState.includes("{")) {
-        alert('State names cannot contain the "{" character!');
+        document.getElementById('error').innerText = 'State names cannot contain "{"';
         return;
       }
-
       transitions.push(new Transition(currentState, nextState, inputSymbol));
-
-      // Populate alphabet without lambda
-      if (inputSymbol !== "\u03BB" && !alphabet.includes(inputSymbol))
-        alphabet.push(inputSymbol);
-
+      if (inputSymbol !== "\u03BB" && !alphabet.includes(inputSymbol)) alphabet.push(inputSymbol);
       if (!states.includes(currentState)) states.push(currentState);
-
       if (!states.includes(nextState)) states.push(nextState);
     });
-
     if (finalStates.includes(",")) finalStates = finalStates.split(",");
-
-    return new UserInput(
+    return new Inputs(
       initialState,
       finalStates,
       states,
