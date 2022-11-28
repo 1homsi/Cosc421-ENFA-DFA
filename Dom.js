@@ -201,6 +201,9 @@ $(document).ready(function () {
   const Update = () => {
     document.getElementById('current-nfa-status').innerText = 'Loading ...';
     let user_input = fetchUserInput();
+
+
+    //Setup the data to be sent to use with viz
     let dotStr = "digraph fsm {\n";
     dotStr += "rankdir=LR;\n";
     dotStr += 'size="8,5";\n';
@@ -208,7 +211,6 @@ $(document).ready(function () {
     dotStr += "node [shape = point]; INITIAL_STATE\n";
     dotStr += "node [shape = circle];\n";
     dotStr += "INITIAL_STATE -> " + user_input.initialState + ";\n";
-
     for (let transition of user_input.transitions)
       dotStr +=
         "" +
@@ -218,12 +220,8 @@ $(document).ready(function () {
         " [label=" +
         transition.symbol +
         "];\n";
-
     dotStr += "}";
-
     d3.select("#current-nfa").graphviz().zoom(false).renderDot(dotStr);
-
-    // generate the DFA
     let dfa = generateDFA(
       new NFA(
         user_input.initialState,
@@ -243,7 +241,7 @@ $(document).ready(function () {
 
     for (let i = 0; i <= LAST_COMPLETED_STEP_COUNT; i++) {
       step_div.append(
-        '<button class="btn btn-xs btn-outline-primary" data-step-number="' +
+        '<button class="Stepbtn" data-step-number="' +
         (i + 1) +
         '">Step ' +
         (i + 1) +

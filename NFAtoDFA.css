@@ -71,5 +71,10 @@ div.new-production {
 
 #current-nfa {
   margin-left: 15px;
+  width: 500px;
 }
 
+.Stepbtn {
+  /* Style for the step buttons */
+  margin-left: 10px;
+}
