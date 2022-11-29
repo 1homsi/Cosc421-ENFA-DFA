@@ -1,9 +1,3 @@
-
-
-
-
-
-
 function exists(trans, stateN, symbolN) {
     for (let l = 0; l < trans.length; l++) {
         if (stateN == trans[l].state && symbolN == trans[l].symbol) {
