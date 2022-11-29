@@ -1,5 +1,7 @@
 # Cosc421-ENFA-DFA
 
+https://cosc421-final.netlify.app/index.html
+
   <h3>How to use</h3>
     <p class="instructions">
       Enter the non-deterministic automata (NFA) transitions here, then define
