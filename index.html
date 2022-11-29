@@ -14,16 +14,16 @@
 <body>
   <nav class="nav">
     <a class="navbar-brand" href="/index.html">Conversion From ε-NFA to DFA</a>
-    <!-- <div class="navbar-nav-items">
+    <div class="navbar-nav-items">
       <a class="navbarLink" href="#">Ex1</a>
-      <a class="navbarLink" href="#">Ex2</a>
-    </div> -->
+      <a class="navbarLink" href="./DAFSA/index.html">Ex2</a>
+    </div>
   </nav>
 
   <div class="container">
     <h1 id="error" style="color: red;"></h1>
     <div>
-      <div class="inst">
+      <!-- <div class="inst">
         <h3>How to use</h3>
         <p>Enter the non-deterministic automata (NFA) transitions here, then define the final states and initial state.
         </p>
@@ -35,7 +35,7 @@
           <li>Inputs are case-sensitive and whitespace is not ignored.</li>
           <li>All entries should be delimited by a comma, if permitted.</li>
         </ul>
-      </div>
+      </div> -->
       <div class="inputs">
         <h3>Input</h3>
         <div class="buttons">
@@ -63,12 +63,14 @@
               <input type="text" id="finalStatesInput" />
             </div>
           </form>
+
+
           <div id="nfa-transitions">
             <div class="production-row">
               &delta;&nbsp;
-              <input type="text" class="current-state-input" placeholder="Current"/>&nbsp;,&nbsp;
+              <input type="text" class="current-state-input" placeholder="Current" />&nbsp;,&nbsp;
               <input type="text" class="input-symbol" placeholder="ε" />&nbsp;&nbsp; &rarr;&nbsp;
-              <input type="text" class="next-states" placeholder="Receiving"/>
+              <input type="text" class="next-states" placeholder="Receiving" />
             </div>
           </div>
         </form>
@@ -105,8 +107,8 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://unpkg.com/viz.js@1.8.1/viz.js" type="javascript/worker"></script>
   <script src="https://unpkg.com/d3-graphviz@2.6.1/build/d3-graphviz.js"></script>
-  <script src="Engine.js"></script>
-  <script src="Dom.js"></script>
+  <script src="./js/Engine.js"></script>
+  <script src="./js/Dom.js"></script>
 </body>
 
 </html>

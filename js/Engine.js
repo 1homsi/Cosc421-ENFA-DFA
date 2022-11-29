@@ -137,13 +137,10 @@ function lambdaClosureNFA(nfa) {
           for (let n = 0; n < next_states.length; n++) {
             let closure = fetch_E_Closure(next_states[n], nfa.transitions);
 
-            //console.log("ARRAY? " + Array.isArray(closure));
-            //console.log(closure);
 
             for (let m = 0; m < closure.length; m++) {
               let to_add = closure[m];
 
-              //console.log("TO ADD? " + to_add);
 
               if (!symbol_next_states.includes(to_add))
                 symbol_next_states.push(to_add);
@@ -153,44 +150,6 @@ function lambdaClosureNFA(nfa) {
       }
 
       symbol_next_states.sort();
-
-      /*if (symbol_next_states.length > 0) {
-
-                for (let fs of nfa.finalStates) {
-
-                    //console.log("Is " + fs + " in " + symbol_next_states + "? | " + symbol_next_states.includes(fs) + ", " + nfa_closed_final_states.includes(fs));
-
-                    if (symbol_next_states.includes(fs) && nfa.initialState !== state) {
-
-                        if (!nfa_closed_final_states.includes(state)) {
-                            nfa_closed_final_states.push(state);
-                            console.log("Added " + state + " (check state) to nfa closed final states");
-                        }
-
-                        if (!nfa_closed_final_states.includes(fs)) {
-                            nfa_closed_final_states.push(fs);
-                            console.log("Added " + fs + " (final state) to nfa closed final states");
-                        }
-
-                        //console.log(nfa_closed_final_states);
-
-                    }
-
-                }
-
-            }*/
-
-      // console.log(
-      //   "NFA Closure: " +
-      //   state +
-      //   " -> " +
-      //   symbol +
-      //   " = " +
-      //   symbol_next_states +
-      //   " (Length " +
-      //   symbol_next_states.length +
-      //   ")"
-      // );
       nfa_closed_transitions.push(
         new Transition(state, symbol_next_states, symbol)
       );
@@ -198,7 +157,6 @@ function lambdaClosureNFA(nfa) {
   }
 
   nfa_closed_final_states.sort();
-  //console.log("Closed NFA Final States: " + nfa_closed_final_states);
 
   // Special case for lambda from initial state to a final state
   let initial_state_closure = fetch_E_Closure(
@@ -346,18 +304,10 @@ function generateDFA(nfa, step_counter_stop = -1) {
     }
   }
 
-  console.log("--- NFA Final States ---");
-  console.log(nfa.finalStates);
-  console.log("-----");
-
   for (let i = 0; i < dfa_states.length; i++) {
     let dfa_sep_states = separateStates(dfa_states[i]);
 
     for (let j = 0; j < nfa.finalStates.length; j++) {
-      console.log(
-        "Does " + dfa_sep_states + " include " + nfa.finalStates[j] + "?"
-      );
-
       if (dfa_sep_states.includes(nfa.finalStates[j])) {
         dfa_final_states.push(nfa.formatDotState(dfa_states[i]));
         break;
@@ -367,7 +317,6 @@ function generateDFA(nfa, step_counter_stop = -1) {
 
   if (!step_interrupt) {
     LAST_COMPLETED_STEP_COUNT = step_counter;
-    console.log("LAST_COMPLETED_STEP_COUNT = " + step_counter);
   }
 
   return new NFA(
@@ -380,8 +329,6 @@ function generateDFA(nfa, step_counter_stop = -1) {
 }
 
 function minimizeDFA(dfa) {
-  console.log("TIME TO MINIMIZE!");
-
   for (let state of dfa.states) {
     for (let state2 of dfa.states) {
       if (
@@ -423,12 +370,9 @@ function minimizeDFA(dfa) {
 
 
           if (remove === "DEAD") {
-            console.log("DEAD state will not be removed.");
+            console.log("Remove Dead state.");
             continue;
           }
-
-          console.log(dfa.states);
-          console.log("Delete " + remove);
 
           dfa.states = dfa.states.filter(function (s) {
             return dfa.formatDotState(s) !== dfa.formatDotState(remove);

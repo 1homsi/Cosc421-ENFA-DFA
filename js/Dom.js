@@ -8,6 +8,8 @@ class Inputs {
   }
 }
 
+
+
 $(document).ready(function () {
   $("#new-transition").click(function () {
     let transitionsDiv = $("#nfa-transitions");
@@ -231,6 +233,7 @@ $(document).ready(function () {
         user_input.transitions
       )
     );
+
 
 
     document.getElementById('current-nfa-status').innerText = '';

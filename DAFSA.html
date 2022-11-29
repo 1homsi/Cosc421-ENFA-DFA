@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Converter</title>
+
+    <!-- CSS -->
+    <link href="NFAtoDFA.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="nav">
+        <a class="navbar-brand" href="/index.html">E-NFA to DFA</a>
+        <div class="navbar-nav-items">
+            <a class="navbarLink" href="/">Ex1</a>
+            <a class="navbarLink" href="#">Ex2</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 id="error" style="color: red;"></h1>
+        <div>
+            <div>
+                <h3>Input</h3>
+                <div class="buttons">
+                    <button type="button" id="resetBtn" title="Reset Page">
+                        Reset
+                    </button>
+                </div>
+
+                <form id="nfa" role="form">
+                    <form>
+                        <div>
+                            <label>Input Language L:&nbsp;&nbsp;</label>
+                            <input type="text" id="initialStateInput" />
+                        </div>
+                        <br />
+                    </form>
+                </form>
+                <br />
+            </div>
+            <div>
+                <h4 id="verify-update-debug">Your input:</h4>
+                <p></p>
+                <span id="current-nfa-status"></span>
+                <div id="current-nfa"></div>
+                <div style="margin-bottom: 50px;"></div>
+                <h4>Equivalent DAFSA:</h4>
+                <div id="current-dafsa"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ignore Just Imports -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/viz.js@1.8.1/viz.js" type="javascript/worker"></script>
+    <script src="https://unpkg.com/d3-graphviz@2.6.1/build/d3-graphviz.js"></script>
+    <script src="./js/DAFSA.js"></script>
+    <script src="./js/Dom.js"></script>
+    <script src="./js/Engine.js"></script>
+</body>
+
+</html>
