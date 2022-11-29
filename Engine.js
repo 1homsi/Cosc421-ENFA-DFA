@@ -414,18 +414,13 @@ function minimizeDFA(dfa) {
           let remove = state;
           let replace = state2;
 
-          console.log(remove);
-          console.log(replace);
-          console.log(dfa.initialState);
+
 
           if (dfa.initialState === remove) {
             remove = state2;
             replace = state;
           }
 
-          console.log(
-            "The two states are equal [" + remove + " = " + replace + "]"
-          );
 
           if (remove === "DEAD") {
             console.log("DEAD state will not be removed.");
