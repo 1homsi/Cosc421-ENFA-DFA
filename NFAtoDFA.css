@@ -180,7 +180,7 @@ label {
   padding-inline: 8px;
 }
 
-.current-state {
+.current-state-input {
   width: 550px;
   height: 25px;
   border-radius: 15px;
@@ -250,11 +250,34 @@ div.new-production {
 }
 
 #current-nfa {
-  margin-left: 15px;
+  margin-left: 2%;
   width: 500px;
+}
+
+#current-dfa {
+  margin-left: 2%;
+  width: 500px;
+}
+
+#step-div {
+  width: 100%;
+  margin-left: 2%;
 }
 
 .Stepbtn {
   /* Style for the step buttons */
-  margin-left: 10px;
+  margin-left: 15px;
+  border: rgb(74, 74, 74) 1px solid;
+  border-radius: 10px;
+  background-color: white;
+  color:  rgb(74, 74, 74);
+  cursor: pointer;
+  padding: 5px;
+  width: 55px;
+}
+
+.Stepbtn:hover {
+  background-color: rgb(74, 74, 74);
+  color: white;
+  transition: 0.8s;
 }
