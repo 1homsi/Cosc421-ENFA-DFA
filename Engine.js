@@ -47,13 +47,10 @@ class NFA {
       transitions = arr;
     }
 
-    // Make sure states cannot be named INITIAL_STATE or FINAL_STATE
     if (states.includes("INITIAL_STATE"))
       throw new Error("State name INITIAL_STATE is reserved");
     if (states.includes("FINAL_STATE"))
       throw new Error("State name FINAL_STATE is reserved");
-
-
 
     this.initialState = initialState;
     this.finalStates = finalStates;
@@ -392,12 +389,10 @@ function minimizeDFA(dfa) {
         dfa.finalStates.includes(dfa.formatDotState(state)) ===
         dfa.finalStates.includes(dfa.formatDotState(state2))
       ) {
-        //console.log("Testing if " + state + " = " + state2);
 
         let statesEqual = true;
 
         for (let symbol of dfa.alphabet) {
-          //console.log("--- Symbol " + symbol + " ---");
 
           let state1_nextStates = findNextStates(
             state,
@@ -409,11 +404,6 @@ function minimizeDFA(dfa) {
             symbol,
             dfa.transitions
           );
-
-          //console.log(state1_nextStates);
-          //console.log(state2_nextStates);
-
-          //console.log("---");
 
           if (!arraysEqual(state1_nextStates, state2_nextStates)) {
             statesEqual = false;
@@ -523,19 +513,12 @@ function combineStates(states) {
 
   if (states.length === 1) return states[0].toString();
 
-  //console.log("-- Combining --");
-  //console.log(states);
-  //console.log("Combine length: " + states.length);
-
   let state = "{";
   for (let i = 0; i < states.length; i++) {
     state += states[i] + ",";
   }
   state = state.trim().replace(/,+$/, "");
   state += "}";
-
-  //console.log("Return " + state);
-  //console.log("----");
 
   return state;
 }
