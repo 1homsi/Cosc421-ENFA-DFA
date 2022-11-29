@@ -64,9 +64,9 @@
           <div id="nfa-transitions">
             <div class="production-row">
               &delta;&nbsp;
-              <input type="text" class="form-control current-state-input" />&nbsp;,&nbsp;
-              <input type="text" class="input-symbol" placeholder="e" />&nbsp;&nbsp; &rarr;&nbsp;
-              <input type="text" class="next-states" />
+              <input type="text" class="current-state" placeholder="current state"/>&nbsp;,&nbsp;
+              <input type="text" class="input-symbol" placeholder="ε" />&nbsp;&nbsp; &rarr;&nbsp;
+              <input type="text" class="next-states" placeholder="receiving state"/>
               <!-- <button class="remove-button" type="button">Remove</button> -->
             </div>
           </div>
@@ -74,12 +74,12 @@
         <br />
       </div>
       <div>
-        <h4 id="verify-update-debug">Your input:</h4>
+        <h4 id="userInputs">Your input:</h4>
         <p></p>
         <span id="current-nfa-status"></span>
         <div id="current-nfa"></div>
         <div style="margin-bottom: 50px;"></div>
-        <h4>Equivalent DFA:</h4>
+        <h4 id="equiDFA">Equivalent DFA:</h4>
         <div>
           <div>
             <span id="current-dfa-status"></span>

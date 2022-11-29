@@ -169,6 +169,7 @@ label {
   height: 20px;
   border-radius: 10px;
   border-width: 1.5px;
+  padding-inline: 8px;
 }
 
 #finalStatesInput {
@@ -176,12 +177,54 @@ label {
   height: 20px;
   border-radius: 10px;
   border-width: 1.5px;
+  padding-inline: 8px;
+}
+
+.current-state {
+  width: 550px;
+  height: 25px;
+  border-radius: 15px;
+  border-width: 1.5px;
+  padding-inline: 5px;
+}
+
+.input-symbol {
+  width: 550px;
+  height: 25px;
+  border-radius: 15px;
+  border-width: 1.5px;
+  padding-inline: 5px;
+}
+
+.next-states {
+  width: 550px;
+  height: 25px;
+  border-radius: 15px;
+  border-width: 1.5px;
+  padding-inline: 5px;
 }
 
 div.production-row {
   min-height: 34px;
   margin: 5px 17px;
   font-size: larger;
+  width: 100%;
+}
+
+#userInputs {
+  margin-left: 2%;
+}
+
+#equiDFA {
+  margin-left: 2%;
+}
+
+#current-nfa-status {
+  margin-left: 2%;
+}
+
+#current-nfa {
+  margin-left: 2%;
 }
 
 div .remove-button {
